@@ -7,7 +7,8 @@ let select = $('#select'),
     info = $('.info'),
     error = $('.error'),
     about = $('.about'),
-    value;
+    value,
+    div = document.createElement('div');
 
 select.addEventListener('click', (e) => {
     let target = e.target;
@@ -29,18 +30,14 @@ async function getSomething(param) {
         error.innerHTML = 'Не выбран параметр';
         return error;
     }
-
-    let div = document.createElement('div');
-    div.classList.add('loading');
-    div.style.display = 'block';
-    submit.after(div);
-
-    const response = await fetchParametr(param);
     error.innerHTML = "";
-
+    
+    
+    loading(div);
+    const response = await fetchParametr(param);
+    div.style.display = 'none';
     const data = await response.json()
         .then(data => {
-            div.style.display = 'none';
             getData(param, data);
         })
         .catch(err => {
@@ -106,11 +103,17 @@ function getTodos(data) {
 function fetchParametr(param) {
     const url = `https://jsonplaceholder.typicode.com/${param}`;
     return new Promise((resolve, reject) => {
-        resolve(fetch(url));
+            resolve(fetch(url));
     })
 }
 
 // for loading
+function loading(div) {
+    div.classList.add('loading');
+    div.style.display = 'block';
+    submit.after(div);
+}
+
 function loadingShow(obj, time) {
     obj.animate({ 'opacity': 1 }, time, function () {
         loadingHide(obj, time);
