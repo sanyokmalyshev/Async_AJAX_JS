@@ -119,3 +119,16 @@ input[type='submit']{
     left: 150px;
     transition: .5s ease-in-out;
   }
+/* for loading */
+.loading {
+    display: none;
+}
+.loading div {
+	opacity: 0;
+	border: 1px #a6a6a6 solid;
+	box-shadow: inset 0px 0px 3px #000;
+	-moz-box-shadow: inset 0px 0px 3px #000;
+	-webkit-box-shadow: inset 0px 0px 3px #000;
+	background-color: #ebebeb;
+	float:left;
+}

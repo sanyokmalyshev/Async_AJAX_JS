@@ -30,11 +30,17 @@ async function getSomething(param) {
         return error;
     }
 
+    let div = document.createElement('div');
+    div.classList.add('loading');
+    div.style.display = 'block';
+    submit.after(div);
+
     const response = await fetchParametr(param);
     error.innerHTML = "";
 
     const data = await response.json()
         .then(data => {
+            div.style.display = 'none';
             getData(param, data);
         })
         .catch(err => {
@@ -103,3 +109,43 @@ function fetchParametr(param) {
         resolve(fetch(url));
     })
 }
+
+// for loading
+function loadingShow(obj, time) {
+    obj.animate({ 'opacity': 1 }, time, function () {
+        loadingHide(obj, time);
+    });
+}
+
+function loadingHide(obj, time) {
+    obj.animate({ 'opacity': 0.3 }, time, function () {
+        setTimeout(function () {
+            loadingShow(obj, time);
+        }, 500);
+    });
+}
+
+setInterval(function () {
+    $('.loading').each(function () {
+        var obj = $(this);
+        if (obj.children('div').length > 0) return;
+        var w = 30;
+        var h = 20;
+        obj.append('<div style="width:' + w + 'px;height:' + h + 'px"></div>');
+        obj.append('<div style="width:' + w + 'px;height:' + h + 'px"></div>');
+        obj.append('<div style="width:' + w + 'px;height:' + h + 'px"></div>');
+        obj.append('<div style="clear:both"></div>');
+        var i = 0;
+        var time = 100;
+        obj.children('div').each(function () {
+            i++;
+            var obj = $(this);
+            setTimeout(function () {
+                loadingShow(obj, time * 2);
+            }, i * time);
+        });
+    });
+}, 100);
+
+
+
