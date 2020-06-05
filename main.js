@@ -31,9 +31,9 @@ async function getSomething(param) {
         return error;
     }
     error.innerHTML = "";
-    
-    
-    loading(div);
+
+
+    loading();
     const response = await fetchParametr(param);
     div.style.display = 'none';
     const data = await response.json()
@@ -103,52 +103,21 @@ function getTodos(data) {
 function fetchParametr(param) {
     const url = `https://jsonplaceholder.typicode.com/${param}`;
     return new Promise((resolve, reject) => {
+        setTimeout(() => {
             resolve(fetch(url));
+        }, 500)
     })
 }
 
 // for loading
-function loading(div) {
-    div.classList.add('loading');
-    div.style.display = 'block';
+function loading() {
+    div.classList.add('spinner');
+    div.style.display = 'flex';
     submit.after(div);
 }
 
-function loadingShow(obj, time) {
-    obj.animate({ 'opacity': 1 }, time, function () {
-        loadingHide(obj, time);
-    });
-}
 
-function loadingHide(obj, time) {
-    obj.animate({ 'opacity': 0.3 }, time, function () {
-        setTimeout(function () {
-            loadingShow(obj, time);
-        }, 500);
-    });
-}
 
-setInterval(function () {
-    $('.loading').each(function () {
-        var obj = $(this);
-        if (obj.children('div').length > 0) return;
-        var w = 30;
-        var h = 20;
-        obj.append('<div style="width:' + w + 'px;height:' + h + 'px"></div>');
-        obj.append('<div style="width:' + w + 'px;height:' + h + 'px"></div>');
-        obj.append('<div style="width:' + w + 'px;height:' + h + 'px"></div>');
-        obj.append('<div style="clear:both"></div>');
-        var i = 0;
-        var time = 100;
-        obj.children('div').each(function () {
-            i++;
-            var obj = $(this);
-            setTimeout(function () {
-                loadingShow(obj, time * 2);
-            }, i * time);
-        });
-    });
-}, 100);
 
 
 
