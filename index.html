@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <p class="task">
+            Создайте функцию, которая будет принимать параметр от пользователя (что получить: posts,
+            comments, todos) и обращаться AJAX запросом по адресу: ‘https://jsonplaceholder.typicode.com/’,
+            получая информацию по запросу и выводя в документ в виде списка данных. В случае ошибки –
+            ее нужно обработать и показать пользователю вместо данных. Необходимо также использовать
+            finally для отображения пользователю информации (контакты и необходимую документацию по примерам из данного
+            урока).
+        </p>
+        <div>
+            <form action="#">
+                <p>Выберите параметр(posts, comments, todos)</p>
+                <div class="__select">
+                    <div class="__select__content" id="select">
+                        <input id="singleSelect0" class="__select__input" type="radio" name="param" value="posts" />
+                        <label for="singleSelect0" class="__select__label">Posts</label>
+                        <input id="singleSelect1" class="__select__input" type="radio" name="param" value="comments"/>
+                        <label for="singleSelect1" class="__select__label">Comments</label>
+                        <input id="singleSelect3" class="__select__input" type="radio" name="param" value="todos"/>
+                        <label for="singleSelect3" class="__select__label">Todos</label>
+                    </div>
+                </div>
+                <input type="submit" value="Отправить">
+            </form>
+        </div>
+        <p class='error'></p>
+        <div class="info">
+
+        </div>
+        <div class="about">
+
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

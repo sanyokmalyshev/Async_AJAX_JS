@@ -1,0 +1,121 @@
+body {
+    background-color: #eedbdb;
+    color: #3a4d13;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.task {
+    background-color: #3a4d13;
+    color: #eedbdb;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.error {
+    color: red;
+}
+
+article {
+    border: 1px solid black;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #3a4d13;
+    color: #eedbdb;
+    border-radius: 20px;
+}
+
+/* for select */
+.__select {
+    display : flex;
+    width   : 230px;
+    height  : 121px;
+    margin  : 10px 0;
+    overflow: hidden;
+    border-radius: 5px;
+    border       : solid 1px #959aa0;
+}
+
+.__select__content {
+    display       : flex;
+    flex-shrink   : 0;
+    flex-direction: column;
+    width         : 100%;
+    overflow-y: hidden;
+}
+
+
+.__select__input {
+    display: none;
+}
+
+.__select__input:checked+label {
+    background-color: #c5b8b8;
+}
+
+.__select__input:disabled+label {
+    opacity       : 0.6;
+    pointer-events: none;
+}
+
+
+.__select__label {
+    display    : flex;
+    align-items: center;
+    flex-shrink: 0;
+    height     : 40px;
+    padding    : 0 16px;
+
+    transition: all 0.2s ease-out;
+
+    cursor: pointer;
+}
+
+.__select__label+input+.__select__label {
+    border-top: 1px solid #959aa0;
+}
+
+.__select__label:hover {
+    background-color: #D8093A !important;
+
+    color: #ffffff;
+}
+/* for button */
+input[type='submit']{
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    padding: 10px 30px;
+    margin: 10px 20px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #D8093A;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif; 
+    color: #D8093A;
+    transition: .2s ease-in-out;
+    background-color: #eedbdb;
+  }
+  input[type='submit']:before {
+    content: "";
+    background: linear-gradient(90deg, rgba(255,255,255,.1), rgba(255,255,255,.5));
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: -8px;
+    left: -75px;
+    transform: skewX(-45deg);
+  }
+  input[type='submit']:hover {
+    background: #D8093A;
+    color: #fff;
+    cursor: pointer;
+  }
+  input[type='submit']:hover:before {
+    left: 150px;
+    transition: .5s ease-in-out;
+  }
